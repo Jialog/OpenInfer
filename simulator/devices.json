@@ -1,0 +1,59 @@
+[
+  {
+    "name": "mac",
+    "title": "Mac (simulated)",
+    "role": "service",
+    "inventory": {
+      "agent_version": "simulator",
+      "openinfer_revision": "simulated",
+      "os": "darwin",
+      "arch": "arm64",
+      "machine_model": "MacBook Pro (simulated)",
+      "cpu_model": "Apple M3 Max",
+      "memory_total_bytes": "51539607552",
+      "memory_available_bytes": "42949672960",
+      "disk_available_bytes": "400000000000",
+      "control_plane_reserved_bytes": "2147483648",
+      "gpus": [],
+      "addresses": [{"address": "192.0.2.10", "interface": "en0"}],
+      "python_executables": [{"path": "/simulated/python3", "version": "3.12", "purpose": "mlx"}],
+      "engines": [{"name": "mlx", "version": "simulated", "available": true, "build": null, "error": null}],
+      "prepared_versions": [],
+      "local_model_folders": false
+    },
+    "download_bytes_per_second": 600000000,
+    "load_seconds": 5,
+    "link": {"round_trip_ms": 0.6, "megabits_per_second": 940},
+    "tokens_per_second_alone": 20,
+    "first_token_seconds": 0.8
+  },
+  {
+    "name": "gpu",
+    "title": "GPU helper (simulated)",
+    "role": "helper",
+    "inventory": {
+      "agent_version": "simulator",
+      "openinfer_revision": "simulated",
+      "os": "linux",
+      "arch": "x86_64",
+      "machine_model": "Desktop PC (simulated)",
+      "cpu_model": "AMD Ryzen 9 7950X",
+      "memory_total_bytes": "68719476736",
+      "memory_available_bytes": "60129542144",
+      "disk_available_bytes": "800000000000",
+      "control_plane_reserved_bytes": null,
+      "gpus": [{"id": "0", "model": "NVIDIA RTX A5000", "vendor": "NVIDIA", "total_bytes": "25757220864",
+                "available_bytes": "25232932864", "compute_tflops": null, "bandwidth_gbps": null, "driver": "simulated"}],
+      "addresses": [{"address": "192.0.2.20", "interface": "eth0"}],
+      "python_executables": [{"path": "/simulated/python3", "version": "3.12", "purpose": "helper"}],
+      "engines": [{"name": "llama.cpp", "version": "simulated", "available": true, "build": null, "error": null}],
+      "prepared_versions": [],
+      "local_model_folders": false
+    },
+    "download_bytes_per_second": 900000000,
+    "load_seconds": 4,
+    "link": {"round_trip_ms": 0.6, "megabits_per_second": 940},
+    "tokens_per_second_with_helper": 45,
+    "helper_token_share": 0.55
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "name": "openinfer",
+  "version": "0.0.0",
+  "private": true,
+  "description": "The OpenInfer website and its server, with simulated inference devices",
+  "scripts": {
+    "postinstall": "npm --prefix server ci --ignore-scripts && npm --prefix web ci --ignore-scripts && npm --prefix simulator ci --ignore-scripts",
+    "demo": "npm --prefix server run build && npm --prefix web run build && node --env-file-if-exists=.env server/dist/demo.js",
+    "devices": "node --env-file-if-exists=.env simulator/node_modules/tsx/dist/cli.mjs simulator/src/main.ts",
+    "test": "npm --prefix server run typecheck && npm --prefix server test && npm --prefix simulator run typecheck && npm --prefix simulator test && npm --prefix web test"
+  }
+}

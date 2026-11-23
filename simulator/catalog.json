@@ -1,0 +1,235 @@
+{
+  "catalog": {
+    "models": {
+      "simulated-lm": {
+        "context_length": 8192,
+        "think_end_id": 2,
+        "sampling": {
+          "temperature": 0.6,
+          "top_p": 0.95,
+          "top_k": 20,
+          "min_p": 0,
+          "presence_penalty": 0
+        }
+      }
+    },
+    "versions": [
+      {
+        "id": "demo-serve-4bit",
+        "role": "service",
+        "label": "Simulated model, 4-bit (serving on a Mac)",
+        "model": "simulated-lm",
+        "repo": "simulated/demo-serve-4bit",
+        "revision": "simulated-1",
+        "quantization": "4-bit",
+        "files": [
+          {
+            "path": "model.safetensors",
+            "sha256": "2c8ba8859e46015241538fea82945f2525758c51c77e1a4bdb0866a463424844",
+            "size_bytes": "6400000000"
+          },
+          {
+            "path": "tokenizer.json",
+            "sha256": "bc3cc70bd40f4bae87a604e9da654ce86196ed92485d7c32cccec714ab015818",
+            "size_bytes": "12000000"
+          }
+        ],
+        "manifest_sha256": "d6e134eb4b5cbe47e59ea1d0c4b5c5e624397fdb2fd642e234956ae20be23b8d",
+        "engine": "mlx",
+        "kind": "simulated",
+        "entry": {
+          "files": {
+            "weights": "model.safetensors"
+          },
+          "command": {
+            "max_requests": "{max_requests}",
+            "context_length": "{context_length}"
+          },
+          "environment": {
+            "peers": "{peers}"
+          }
+        },
+        "platform": {
+          "os": "darwin",
+          "arch": "arm64",
+          "gpu_vendor": null
+        },
+        "max_requests": 1,
+        "build_requirements": {
+          "source_revision": "simulated-engine-1",
+          "bridge_revision": null,
+          "options": {}
+        },
+        "draft_model": null,
+        "compatible_service_version_ids": [],
+        "validation": {
+          "hardware": [],
+          "evidence": [
+            "simulated: nothing was measured"
+          ],
+          "complete": true,
+          "missing": []
+        }
+      },
+      {
+        "id": "demo-help-8bit",
+        "role": "helper",
+        "label": "Simulated helper, 8-bit",
+        "model": "simulated-lm",
+        "repo": "simulated/demo-help-8bit",
+        "revision": "simulated-1",
+        "quantization": "8-bit",
+        "files": [
+          {
+            "path": "model.gguf",
+            "sha256": "f39d903e64add49abc56855e59e1160eff6481ded1415570ba28753280cb4161",
+            "size_bytes": "9600000000"
+          }
+        ],
+        "manifest_sha256": "d95bf191f2cb6adf0951dc88a53a9688c4a10505b8aff9ae0b99dd35f47093bb",
+        "engine": "llama.cpp",
+        "kind": "simulated",
+        "entry": {
+          "files": {
+            "weights": "model.gguf",
+            "draft": "draft.gguf"
+          },
+          "command": {
+            "writer_id": "{writer_id}",
+            "context_length": "{context_length}"
+          },
+          "environment": {
+            "gpu": "{gpu}"
+          }
+        },
+        "platform": {
+          "os": "linux",
+          "arch": "x86_64",
+          "gpu_vendor": "NVIDIA"
+        },
+        "build_requirements": {
+          "source_revision": "simulated-engine-1",
+          "bridge_revision": null,
+          "options": {}
+        },
+        "draft_model": {
+          "enabled": true,
+          "mechanism": "simulated",
+          "draft_repo": "simulated/draft",
+          "draft_revision": "simulated-1",
+          "files": [
+            {
+              "path": "draft.gguf",
+              "sha256": "63c6ce5881b6deeb2c8145aaa32f8e0e68f9c9cddd441fbc4d07b66d2c513e40",
+              "size_bytes": "900000000"
+            }
+          ],
+          "parameters": {
+            "drafts_per_round": 4
+          }
+        },
+        "compatible_service_version_ids": [
+          "demo-serve-4bit"
+        ],
+        "validation": {
+          "hardware": [],
+          "evidence": [
+            "simulated: nothing was measured"
+          ],
+          "complete": true,
+          "missing": []
+        }
+      },
+      {
+        "id": "demo-help-4bit",
+        "role": "helper",
+        "label": "Simulated helper, 4-bit",
+        "model": "simulated-lm",
+        "repo": "simulated/demo-help-4bit",
+        "revision": "simulated-1",
+        "quantization": "4-bit",
+        "files": [
+          {
+            "path": "model.gguf",
+            "sha256": "dda0843c43e9f67fb507aebe9fc410184304468dece5cbdddcc03fd3fbaf234a",
+            "size_bytes": "5200000000"
+          }
+        ],
+        "manifest_sha256": "f2411519fe5171d5dacb7841421014557562865167be4fdc3740c9e05e77e0c5",
+        "engine": "llama.cpp",
+        "kind": "simulated",
+        "entry": {
+          "files": {
+            "weights": "model.gguf",
+            "draft": "draft.gguf"
+          },
+          "command": {
+            "writer_id": "{writer_id}",
+            "context_length": "{context_length}"
+          },
+          "environment": {
+            "gpu": "{gpu}"
+          }
+        },
+        "platform": {
+          "os": "linux",
+          "arch": "x86_64",
+          "gpu_vendor": "NVIDIA"
+        },
+        "build_requirements": {
+          "source_revision": "simulated-engine-1",
+          "bridge_revision": null,
+          "options": {}
+        },
+        "draft_model": {
+          "enabled": true,
+          "mechanism": "simulated",
+          "draft_repo": "simulated/draft",
+          "draft_revision": "simulated-1",
+          "files": [
+            {
+              "path": "draft.gguf",
+              "sha256": "63c6ce5881b6deeb2c8145aaa32f8e0e68f9c9cddd441fbc4d07b66d2c513e40",
+              "size_bytes": "900000000"
+            }
+          ],
+          "parameters": {
+            "drafts_per_round": 4
+          }
+        },
+        "compatible_service_version_ids": [
+          "demo-serve-4bit"
+        ],
+        "validation": {
+          "hardware": [],
+          "evidence": [
+            "simulated: nothing was measured"
+          ],
+          "complete": true,
+          "missing": []
+        }
+      }
+    ]
+  },
+  "requirements": {
+    "demo-serve-4bit": {
+      "memory_bytes": "21474836480",
+      "disk_bytes": "8000000000"
+    },
+    "demo-help-8bit": {
+      "memory_bytes": "21474836480",
+      "disk_bytes": "12000000000",
+      "precision_rank": 1
+    },
+    "demo-help-4bit": {
+      "memory_bytes": "11811160064",
+      "disk_bytes": "7000000000",
+      "precision_rank": 2
+    }
+  },
+  "warmup": {
+    "resource_id": "simulated-warmup",
+    "sha256": "901acb13f3f923b73e85725432d8ec0bf5ae197d1be6d67213d68f1a585e1edc",
+    "max_output_tokens": 256
+  }
+}

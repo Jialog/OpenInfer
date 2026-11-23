@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.DS_Store
+
+# What a local run creates: the database, the certificate, your settings
+/data/
+.env

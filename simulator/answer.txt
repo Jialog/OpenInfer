@@ -1,0 +1,22 @@
+The user sent a prompt of {prompt_tokens} tokens. No model is running here: this device is simulated, so I will not answer the question itself. I should say so plainly, then explain what the page is showing, because that is what the person watching can check: the text arrives in pieces, the pieces are confirmed by the server before they appear, and the speed depends on whether the helper is connected.
+</think>
+This is simulated output. No model ran: the device that "wrote" this text is a small program that speaks the same protocol as a real inference device and streams a fixed text at a speed set in simulator/devices.json.
+
+Your prompt had {prompt_tokens} tokens and began with: "{prompt_start}"
+
+What you are seeing is real, though:
+
+1. The website sent the request to the server over its REST API.
+2. The server handed it to the serving device as a command and stored every piece of output in the database as it came back.
+3. Each piece reached this page over a WebSocket, without a refresh.
+4. When the request ends, the server saves the whole result as one object in the storage bucket.
+
+The speeds above are the simulator's settings, not measurements:
+
+```
+serving device alone        tokens_per_second_alone
+with the helper connected   tokens_per_second_with_helper
+share of helper tokens      helper_token_share
+```
+
+To watch a helper drop out, type "leave gpu" in the simulator's terminal and send another request: the session becomes degraded and the text arrives at the slower speed. Type "join gpu", press "Reconnect helper", and the faster speed returns.
